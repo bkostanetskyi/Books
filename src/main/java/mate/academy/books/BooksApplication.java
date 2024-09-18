@@ -1,5 +1,6 @@
 package mate.academy.books;
 
+import java.math.BigDecimal;
 import java.util.List;
 import mate.academy.books.model.Book;
 import mate.academy.books.repository.BookRepository;
@@ -22,7 +23,12 @@ public class BooksApplication {
     public CommandLineRunner commandLineRunner() {
         return args -> {
             Book book = new Book();
-            book.setTitle("Book 1");
+            book.setTitle("Effective Java");
+            book.setAuthor("Joshua Bloch");
+            book.setIsbn("978-0134685991");
+            book.setPrice(new BigDecimal("45.00"));
+            book.setDescription("A comprehensive guide to best practices in Java programming.");
+            book.setCoverImage("effective_java_cover.jpg");
 
             bookRepository.save(book);
 

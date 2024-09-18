@@ -27,6 +27,7 @@ public class BookRepositoryImpl implements BookRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
+            throw new DataProcessingException("Error occurred during data processing", e);
         } finally {
             if (session != null) {
                 session.close();
