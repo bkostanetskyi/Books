@@ -3,7 +3,7 @@ package mate.academy.books;
 import java.math.BigDecimal;
 import java.util.List;
 import mate.academy.books.model.Book;
-import mate.academy.books.repository.BookRepository;
+import mate.academy.books.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class BooksApplication {
     @Autowired
-    private BookRepository bookRepository;
+    private BookService bookService;
 
     public static void main(String[] args) {
         SpringApplication.run(BooksApplication.class, args);
@@ -30,9 +30,9 @@ public class BooksApplication {
             book.setDescription("A comprehensive guide to best practices in Java programming.");
             book.setCoverImage("effective_java_cover.jpg");
 
-            bookRepository.save(book);
+            bookService.save(book);
 
-            List<Book> books = bookRepository.findAll();
+            List<Book> books = bookService.findAll();
         };
     }
 }

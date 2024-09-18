@@ -27,7 +27,7 @@ public class BookRepositoryImpl implements BookRepository {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataProcessingException("Error occurred during data processing", e);
+            throw new DataProcessingException("Can't save the book", e);
         } finally {
             if (session != null) {
                 session.close();
@@ -39,7 +39,7 @@ public class BookRepositoryImpl implements BookRepository {
     @Override
     public List<Book> findAll() {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("from Book", Book.class).list();
+            return session.createQuery("from Book", Book.class).getResultList();
         } catch (Exception e) {
             throw new DataProcessingException("Can't find books", e);
         }
