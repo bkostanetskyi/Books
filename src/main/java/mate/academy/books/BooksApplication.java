@@ -1,5 +1,6 @@
 package mate.academy.books;
 
+import java.util.List;
 import mate.academy.books.model.Book;
 import mate.academy.books.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class BooksApplication {
             book.setTitle("Book 1");
 
             bookRepository.save(book);
+
+            List<Book> books = bookRepository.findAll();
         };
     }
 }

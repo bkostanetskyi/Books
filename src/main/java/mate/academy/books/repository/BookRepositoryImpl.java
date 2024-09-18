@@ -1,6 +1,5 @@
 package mate.academy.books.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import mate.academy.books.exception.DataProcessingException;
@@ -38,12 +37,10 @@ public class BookRepositoryImpl implements BookRepository {
 
     @Override
     public List<Book> findAll() {
-        List<Book> books = new ArrayList<>();
-        try {
-            books = sessionFactory.getCurrentSession().createQuery("from Book", Book.class).list();
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("from Book", Book.class).list();
         } catch (Exception e) {
-            throw new DataProcessingException("Can`t find books", e);
+            throw new DataProcessingException("Can't find books", e);
         }
-        return books;
     }
 }
