@@ -31,7 +31,7 @@ databaseChangeLog:
                     unique: true
               - column:
                   name: price
-                  type: java.math.BigDecimal
+                  type: DECIMAL(10, 2)
                   constraints:
                     nullable: false
               - column:
@@ -48,4 +48,3 @@ databaseChangeLog:
                   defaultValueBoolean: false
                   constraints:
                     nullable: false
-
